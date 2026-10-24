@@ -1,0 +1,100 @@
+table,column,dtype,description
+fact_daily_risk,date,datetime64[s],Trading date
+fact_daily_risk,close,float64,Sensex closing level
+fact_daily_risk,return,float64,Simple daily return (decimal)
+fact_daily_risk,drawdown,float64,"Decline from running peak (decimal, <= 0)"
+fact_daily_risk,ewma_vol_annual,float64,"EWMA volatility (lambda 0.94), annualised"
+fact_daily_risk,realised_vol_21d_annual,float64,"21-day realised volatility, annualised"
+fact_daily_risk,var99_normal,float64,99% VaR forecast for the named model
+fact_daily_risk,exception_normal,Int64,Exception flag for the named model
+fact_daily_risk,var99_historical,float64,99% VaR forecast for the named model
+fact_daily_risk,exception_historical,Int64,Exception flag for the named model
+fact_daily_risk,var99_ewma,float64,99% VaR forecast for the named model
+fact_daily_risk,exception_ewma,Int64,Exception flag for the named model
+fact_daily_risk,var99_filtered_hs,float64,99% VaR forecast for the named model
+fact_daily_risk,exception_filtered_hs,Int64,Exception flag for the named model
+fact_daily_risk,anomaly_methods,int64,Number of anomaly methods flagging the day
+fact_var_backtest,date,str,Trading date
+fact_var_backtest,model,str,VaR model name
+fact_var_backtest,var_pct,float64,"1-day 99% VaR forecast (decimal, positive = loss)"
+fact_var_backtest,ret,float64,Realised daily return (decimal)
+fact_var_backtest,exception,int64,1 if realised loss exceeded the VaR forecast
+fact_var_summary,method,str,
+fact_var_summary,confidence,str,
+fact_var_summary,1d VaR %,float64,
+fact_var_summary,1d ES %,float64,
+fact_var_summary,1d VaR (INR),float64,
+fact_var_summary,1d ES (INR),float64,
+fact_var_summary,10d VaR (INR),float64,
+fact_var_summary,10d ES (INR),float64,
+fact_backtest_summary,model,str,VaR model name
+fact_backtest_summary,test days,int64,
+fact_backtest_summary,exceptions,int64,Count of records failing the control
+fact_backtest_summary,expected,float64,
+fact_backtest_summary,exception rate %,float64,
+fact_backtest_summary,Kupiec p,str,
+fact_backtest_summary,Christoffersen p,str,
+fact_backtest_summary,Cond. coverage p,str,
+fact_backtest_summary,latest 250d,str,
+fact_backtest_summary,worst 250d,str,
+fact_backtest_summary,% of days in Red,float64,
+fact_backtest_summary,avg VaR %,float64,
+fact_backtest_summary,verdict,str,
+fact_stress_scenarios,scenario,str,
+fact_stress_scenarios,annual vol %,float64,
+fact_stress_scenarios,daily vol %,float64,
+fact_stress_scenarios,1d VaR 99% (INR),float64,
+fact_stress_scenarios,10d VaR 99% (INR),float64,
+fact_stress_scenarios,1d ES 99% (INR),float64,
+fact_stress_scenarios,type,str,
+fact_stress_scenarios,from,object,
+fact_stress_scenarios,to,object,
+fact_stress_scenarios,index move %,float64,
+fact_stress_scenarios,P&L (INR),float64,
+fact_stress_scenarios,x 1d hist VaR99,float64,
+fact_anomaly_register,date,datetime64[s],Trading date
+fact_anomaly_register,prev_close,float64,
+fact_anomaly_register,close,float64,Sensex closing level
+fact_anomaly_register,ret,float64,Realised daily return (decimal)
+fact_anomaly_register,gap,float64,
+fact_anomaly_register,range,float64,
+fact_anomaly_register,z_vol_adj,float64,
+fact_anomaly_register,flag_fixed_5pct,bool,
+fact_anomaly_register,flag_vol_adjusted,bool,
+fact_anomaly_register,flag_isolation_forest,bool,
+fact_anomaly_register,n_methods,int64,Number of anomaly methods flagging the day (0-3)
+fact_anomaly_register,priority,str,Triage priority (High = 2+ methods)
+fact_anomaly_register,context,str,
+dim_dq_controls,control_id,str,Data quality control identifier
+dim_dq_controls,dimension,str,
+dim_dq_controls,rule,str,
+dim_dq_controls,population,int64,
+dim_dq_controls,exceptions,int64,Count of records failing the control
+dim_dq_controls,exception_rate_%,float64,Exception flag for the named model
+dim_dq_controls,status,str,PASS / REVIEW / FAIL (or remediation status for findings)
+fact_dq_exceptions,control_id,str,Data quality control identifier
+fact_dq_exceptions,date,datetime64[s],Trading date
+fact_dq_exceptions,detail,str,Context for the exception
+fact_portfolio_risk,ticker,str,
+fact_portfolio_risk,asset class,str,
+fact_portfolio_risk,weight %,float64,
+fact_portfolio_risk,standalone vol %,float64,
+fact_portfolio_risk,marginal contrib.,float64,
+fact_portfolio_risk,risk contribution %,float64,Share of portfolio volatility from the holding (Euler allocation)
+fact_portfolio_scenarios,holding,str,
+fact_portfolio_scenarios,COVID-19 crash,float64,
+fact_portfolio_scenarios,2022 rate shock,float64,
+fact_portfolio_scenarios,Q4-2018 sell-off,float64,
+fact_portfolio_drift,ticker,str,
+fact_portfolio_drift,target %,float64,
+fact_portfolio_drift,current %,float64,
+fact_portfolio_drift,drift (pp),float64,"Current minus target weight, percentage points"
+fact_portfolio_drift,relative drift %,float64,
+fact_portfolio_drift,action,str,
+dim_review_findings,id,str,
+dim_review_findings,rating,str,Finding rating (High / Medium / Low)
+dim_review_findings,area,str,
+dim_review_findings,observation,str,
+dim_review_findings,recommendation,str,
+dim_review_findings,addressed_in,str,
+dim_review_findings,status,str,PASS / REVIEW / FAIL (or remediation status for findings)

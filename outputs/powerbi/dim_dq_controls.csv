@@ -1,0 +1,12 @@
+control_id,dimension,rule,population,exceptions,exception_rate_%,status
+DQ-01,Completeness,No missing OHLC values,2661,0,0.0,PASS
+DQ-02,Uniqueness,One record per trading date,2661,0,0.0,PASS
+DQ-03,Chronology,Dates strictly increasing,2661,0,0.0,PASS
+DQ-04,Validity,All prices > 0,2661,0,0.0,PASS
+DQ-05,OHLC integrity,"Low <= min(Open, Close) and High >= max(Open, Close)",2661,0,0.0,PASS
+DQ-06,Staleness,Close differs from previous close,2661,0,0.0,PASS
+DQ-07,Gaps,Gap to previous record <= 4 calendar days,2661,4,0.1503194287861706,REVIEW
+DQ-08,Calendar,Records fall on weekdays,2661,0,0.0,PASS
+DQ-09,Plausibility,|daily return| <= 10% unless corroborated,2661,1,0.03757985719654265,REVIEW
+DQ-10,Volume completeness,Volume > 0,2661,8,0.3006388575723412,REVIEW
+DQ-11,Volume plausibility,Volume <= 50x trailing 60-day median,2661,19,0.7140172867343104,REVIEW

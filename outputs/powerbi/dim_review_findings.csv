@@ -1,0 +1,11 @@
+id,rating,area,observation,recommendation,addressed_in,status
+F-01,High,Methodology,Volatility annualised with (1+s)^12-1: reports 14.9% instead of 18.4%; the inverse error overstates stressed VaR by ~20%.,Use square-root-of-time scaling and document the assumption.,Section 8,Remediated in this notebook
+F-02,High,Validation,"VaR is never compared with realised P&L, so there is no evidence the model is fit for purpose.",Rolling out-of-sample backtest with Kupiec / Christoffersen tests and Basel traffic light.,Section 9,Remediated in this notebook
+F-03,High,Methodology,Normal distribution assumed; fat tails were seen in a KDE plot but never tested or reflected in the risk measure.,"Formal normality test; historical, Cornish-Fisher, Student-t and filtered HS VaR; add Expected Shortfall.","Sections 4, 7",Remediated in this notebook
+F-04,Medium,Validation,"The ""VaR simulation"" is circular: simulated paths re-estimate the input sigma, so they cannot confirm the VaR.",Remove it as validation evidence; use simulation for forward distributions only.,"Sections 3, 6",Remediated in this notebook
+F-05,Medium,Coverage,Only a 1-day 95% VaR: no 99% / 10-day measure and no Expected Shortfall.,"Report 95% and 99%, 1-day and 10-day VaR and ES.",Section 7,Remediated in this notebook
+F-06,Medium,Monitoring,Fixed +/-5% outlier rule ignores the volatility regime; previous close is filled with a row-by-row positional loop.,Volatility-adjusted z-score and Isolation Forest; vectorised shift().,Section 5,Remediated in this notebook
+F-07,Medium,Data,"No data quality controls on the input file (duplicates, OHLC integrity, gaps, staleness).",Automated DQ controls with exception log and reconciliation.,Section 2,Remediated in this notebook
+F-08,Low,Reproducibility,"No random seed, hard-coded /content path, dates not parsed, fragmented DataFrame built in a loop.","Central config, seeded RNG, parsed dates, vectorised simulation.","Sections 0, 1, 6",Remediated in this notebook
+F-09,Low,Coverage,Stress testing limited to two volatility levels.,"Add regime, historical, hypothetical and reverse stress tests.",Section 8,Remediated in this notebook
+F-10,Low,Coverage,Single index only; no portfolio or diversification view.,Multi-asset portfolio with risk contributions and scenario P&L.,Section 10,Remediated in this notebook

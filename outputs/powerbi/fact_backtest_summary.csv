@@ -1,0 +1,5 @@
+model,test days,exceptions,expected,exception rate %,Kupiec p,Christoffersen p,Cond. coverage p,latest 250d,worst 250d,% of days in Red,avg VaR %,verdict
+Normal,2409,46,24.1,1.9095060190950601,<0.001,0.012,<0.001,8 (Yellow),12 (Red),10.046296296296296,2.179306686611923,Reject
+Historical,2409,38,24.1,1.5774180157741802,0.009,0.023,0.002,6 (Yellow),10 (Red),9.12037037037037,2.5819886860626466,Reject
+EWMA,2409,44,24.1,1.82648401826484,<0.001,0.201,<0.001,4 (Green),12 (Red),4.907407407407407,2.0892486808963047,Reject
+Filtered HS,2409,31,24.1,1.2868410128684102,0.175,0.369,0.267,4 (Green),8 (Yellow),0.0,2.5530929448287223,Accept
